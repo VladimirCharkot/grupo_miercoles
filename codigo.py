@@ -1,10 +1,13 @@
+from random import *
 class Persona:
 
   def __init__(self, nombre):
     self.nombre = nombre
+    self.edad = randint(3, 80)
   
   def saludar(self):
     print(f'Hola, soy {self.nombre}')
+    print(f'Tengo {self.edad} años')
 
 p1 = Persona("Vladi")
 p2 = Persona("Renzo")
