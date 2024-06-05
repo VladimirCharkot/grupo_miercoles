@@ -14,7 +14,9 @@ p5 = Persona("Alma")
 p6 = Persona("Lucía")
 p7 = Persona("Fer")
 
-print("Hola grupo!")
+p1.saludar()
+p2.saludar()
+p3.saludar()
 
 # git init - convertir una carpeta en repo
 
@@ -27,3 +29,5 @@ print("Hola grupo!")
 # git checkout ______ - moverse entre ramas
 
 # git merge NOMBRERAMA - mergea NOMBRERAMA en la rama en la que estoy parado
+
+# git diff C1..C2
