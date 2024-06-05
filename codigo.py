@@ -1,10 +1,13 @@
+from random import *
 class Persona:
 
   def __init__(self, nombre):
     self.nombre = nombre
+    self.edad = randint(3, 80)
   
   def saludar(self):
     print(f'Hola, soy {self.nombre}')
+    print(f'Tengo {self.edad} años')
 
 p1 = Persona("Vladi")
 p2 = Persona("Renzo")
@@ -18,12 +21,10 @@ p1.saludar()
 p2.saludar()
 p3.saludar()
 
-#naza mensaje
-
 # git init - convertir una carpeta en repo
 
 # git status
-print("lalalal")
+
 # git add - agregar archivos al stage
 # git commit -m "Mensaje" - commitea los cambios
 
