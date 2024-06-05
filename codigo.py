@@ -6,6 +6,11 @@ class Persona:
   def saludar(self):
     print(f'Hola, soy {self.nombre}')
 
+p1 = Persona("Vladi")
+p2 = Persona("Renzo")
+p3 = Persona("Naza")
+p4 = Persona("Luki")
+
 print("Hola grupo!")
 
 # git init - convertir una carpeta en repo
