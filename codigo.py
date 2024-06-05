@@ -18,6 +18,8 @@ p1.saludar()
 p2.saludar()
 p3.saludar()
 
+print("Lalala")
+
 # git init - convertir una carpeta en repo
 
 # git status
@@ -31,3 +33,7 @@ p3.saludar()
 # git merge NOMBRERAMA - mergea NOMBRERAMA en la rama en la que estoy parado
 
 # git diff C1..C2
+
+# git remote add origin https://github.com/VladimirCharkot/grupo_miercoles.git
+
+# git push
