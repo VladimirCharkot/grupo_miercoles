@@ -24,4 +24,6 @@ print("Hola grupo!")
 # git commit -m "Mensaje" - commitea los cambios
 
 # git log --oneline
-# git checkout ______
+# git checkout ______ - moverse entre ramas
+
+# git merge NOMBRERAMA - mergea NOMBRERAMA en la rama en la que estoy parado
