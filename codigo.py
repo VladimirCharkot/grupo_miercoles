@@ -21,7 +21,7 @@ p3.saludar()
 # git init - convertir una carpeta en repo
 
 # git status
-
+print("lalalal")
 # git add - agregar archivos al stage
 # git commit -m "Mensaje" - commitea los cambios
 
