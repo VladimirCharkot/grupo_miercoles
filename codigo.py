@@ -18,6 +18,8 @@ p1.saludar()
 p2.saludar()
 p3.saludar()
 
+#naza mensaje
+
 # git init - convertir una carpeta en repo
 
 # git status
