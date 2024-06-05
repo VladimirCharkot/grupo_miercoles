@@ -14,3 +14,6 @@ print("Hola grupo!")
 
 # git add - agregar archivos al stage
 # git commit -m "Mensaje" - commitea los cambios
+
+# git log --oneline
+# git checkout ______
