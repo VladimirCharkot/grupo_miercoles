@@ -10,6 +10,9 @@ p1 = Persona("Vladi")
 p2 = Persona("Renzo")
 p3 = Persona("Naza")
 p4 = Persona("Luki")
+p5 = Persona("Alma")
+p6 = Persona("Lucía")
+p7 = Persona("Fer")
 
 print("Hola grupo!")
 
