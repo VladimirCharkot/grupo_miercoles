@@ -1,0 +1,32 @@
+{
+  "nombre": "Ben",
+  "edad": 32,
+  "habilidades": [
+    "guitarra",
+    "patín",
+    "circo",
+    "ciclismo"
+  ],
+  "desea aprender": [
+    "acrobacia",
+    "dibujo"
+  ],
+  "detesta": [
+    "danza",
+    "ilustración",
+    "programación"
+  ],
+  "signo": "tauro",
+  "presentación": "Ben es un apasionado del entretenimiento y la aventura. Con una edad de 32 años, tiene una gran experiencia en varios ámbitos que lo han llevado a desarrollar habilidades en la guitarra, patín, circo y ciclismo.",
+  "personalidad": {
+    "descripción": "Juan es una persona muy fiel y leal a sus amigos y familiares. Le gusta disfrutar de la vida con ellos y compartir experiencias emocionantes",
+    "características": [
+      "leal",
+      "confiado",
+      "práctico"
+    ],
+    "debilidades": [
+      "pérdida de control en situaciones estresantes"
+    ]
+  }
+}

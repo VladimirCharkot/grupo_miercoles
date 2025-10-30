@@ -1,0 +1,33 @@
+{
+  "nombre": "Xavi",
+  "edad": 25,
+  "habilidades": [
+    "pintura",
+    "ciclismo",
+    "circo",
+    "ilustración"
+  ],
+  "desea aprender": [
+    "programación",
+    "gimnasia"
+  ],
+  "detesta": [
+    "danza",
+    "cocina",
+    "jardinería"
+  ],
+  "signo": "escorpio",
+  "presentacion": "Es un joven creativo y aventurero con una gran pasión por el arte y el deporte. A menudo se le puede ver pintando en la calle o practicando ciclismo por la ciudad.",
+  "personalidad": {
+    "descripción": "Juan es alguien que siempre busca desafiar las normas y no le gusta ser parte de una multitud, prefiere hacer lo suyo.",
+    "características": [
+      "leal",
+      "inteligente",
+      "apasionado"
+    ],
+    "debilidades": [
+      "testarudo",
+      "sospechoso"
+    ]
+  }
+}

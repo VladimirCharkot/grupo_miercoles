@@ -1,0 +1,33 @@
+{
+  "nombre": "Yesa",
+  "edad": 38,
+  "habilidades": [
+    "patín",
+    "piano",
+    "gimnasia",
+    "ciclismo"
+  ],
+  "desea aprender": [
+    "cocina",
+    "programación"
+  ],
+  "detesta": [
+    "jardinería",
+    "guitarra",
+    "ilustración"
+  ],
+  "signo": "virgo",
+  "presentación": "Me presento a Yesa, una persona de 38 años con un interés en actividades físicas y musicales. También tiene ganas de aprender nuevas habilidades.",
+  "personalidad": {
+    "descripción": "Juan es una persona muy ordenada y detallista. Le gusta planificar y prepararse para cualquier situación.",
+    "características": [
+      "leal",
+      "perfeccionista",
+      "responsable"
+    ],
+    "debilidades": [
+      "miedo al compromiso",
+      "puntualidad excesiva"
+    ]
+  }
+}

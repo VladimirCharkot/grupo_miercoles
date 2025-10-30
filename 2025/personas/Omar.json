@@ -1,0 +1,34 @@
+{
+  "nombre": "Omar",
+  "edad": 31,
+  "habilidades": [
+    "guitarra",
+    "pintura",
+    "danza",
+    "ciclismo"
+  ],
+  "desea aprender": [
+    "artes marciales",
+    "ilustración"
+  ],
+  "detesta": [
+    "patín",
+    "dibujo",
+    "programación"
+  ],
+  "signo": "escorpio",
+  "presentación": "Conoce a Omar, un joven apasionado y creativo con una gran variedad de intereses. Su amor por la música, el arte y el deporte lo lleva a explorar constantemente nuevos horizontes.",
+  "personalidad": {
+    "descripción": "Omar es una persona intensa y emocionalmente profunda, siempre dispuesto a lanzarse al agua sin miedo de enfrentar los desafíos. Su lealtad hacia aquellos que se ganan su confianza es total, pero puede llegar a ser extremadamente celoso cuando siente que algo o alguien está amenazando su seguridad",
+    "características": [
+      "intensidad emocional",
+      "fidelidad",
+      "independencia"
+    ],
+    "debilidades": [
+      "celos",
+      "suspicacia",
+      "retención de emociones"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "nombre": "Sasha",
+  "edad": 33,
+  "habilidades": [
+    "programación",
+    "jardinería",
+    "artes marciales",
+    "dibujo"
+  ],
+  "desea aprender": [
+    "circo",
+    "danza"
+  ],
+  "detesta": [
+    "piano",
+    "patín",
+    "ciclismo"
+  ],
+  "signo": "acuario",
+  "presentación": "Conocemos a Sasha, una joven apasionada y creativa que disfruta de una amplia variedad de actividades. Su mente ágil y su espíritu aventurero la llevan a descubrir nuevas habilidades y pasatiempos.",
+  "personalidad": {
+    "descripción": "Sasha es alguien con quien se puede contar, siempre dispuesta a ayudar y apoyar a los demás. Su capacidad para adaptarse a situaciones nuevas y desafiantes la hace muy valiosa en proyectos y equipos.",
+    "características": [
+      "sensible",
+      "impredecible",
+      "amante de la libertad"
+    ],
+    "debilidades": [
+      "deseo constante de cambios",
+      "paciencia limitada"
+    ]
+  }
+}

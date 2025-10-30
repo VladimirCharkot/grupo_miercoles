@@ -1,0 +1,33 @@
+{
+  "nombre": "Dalia",
+  "edad": 28,
+  "habilidades": [
+    "gimnasia",
+    "jardinería",
+    "acrobacia",
+    "cocina"
+  ],
+  "desea aprender": [
+    "artes marciales",
+    "danza"
+  ],
+  "detesta": [
+    "circo",
+    "dibujo",
+    "pintura"
+  ],
+  "signo": "tauro",
+  "presentación": "Quiero presentar a Dalia, una joven apasionada y activa de 28 años. Tiene un gran talento para la gimnasia, jardinería, acrobacia y cocina, y siempre está dispuesta a aprender nuevas habilidades. A pesar de sus gustos eclécticos, no puede soportar el circo, el dibujo o la pintura.",
+  "personalidad": {
+    "descripcion": "Dalia es una persona leal y apasionada que se entrega con entusiasmo a las cosas que ama. Tiene una gran fuerza física y un espíritu aventurero que la lleva a probar nuevas actividades y deportes.",
+    "características": [
+      "confiada",
+      "espontánea",
+      "físicamente fuerte"
+    ],
+    "debilidades": [
+      "perezosa",
+      "impaciente"
+    ]
+  }
+}

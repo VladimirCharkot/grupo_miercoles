@@ -1,0 +1,34 @@
+{
+  "nombre": "Tilo",
+  "edad": 24,
+  "habilidades": [
+    "artes marciales",
+    "pintura",
+    "dibujo",
+    "piano"
+  ],
+  "desea aprender": [
+    "ciclismo",
+    "guitarra"
+  ],
+  "detesta": [
+    "ilustración",
+    "patín",
+    "programación"
+  ],
+  "signo": "Virgo",
+  "presentación": "Conozca a Tilo, un joven de 24 años con un gran talento para las artes. Sus habilidades en artes marciales y creativas lo convierten en un personaje interesante.",
+  "personalidad": {
+    "descripción": "Tilo es una persona metódica y detallista que aplica su rigor a cada aspecto de la vida, desde su práctica de artes marciales hasta sus creaciones pictóricas. Su atención al detalle es notable, lo que hace que sea preciso en su trabajo.",
+    "características": [
+      "leal",
+      "preciso",
+      "detallista",
+      "perfeccionista"
+    ],
+    "debilidades": [
+      "puede ser demasiado crítico consigo mismo",
+      "requiere estructura y orden"
+    ]
+  }
+}

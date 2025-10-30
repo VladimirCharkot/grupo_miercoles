@@ -1,0 +1,33 @@
+{
+  "nombre": "Cami",
+  "edad": 39,
+  "habilidades": [
+    "jardinería",
+    "piano",
+    "ciclismo",
+    "pintura"
+  ],
+  "desea aprender": [
+    "ilustración",
+    "danza"
+  ],
+  "detesta": [
+    "acrobacia",
+    "circo",
+    "guitarra"
+  ],
+  "signo": "tauro",
+  "presentación": "Conocemos a Cami, una persona con intereses variados y pasiones creativas. Es una jardinera apasionada, que también se disfruta tocando el piano, montar en bicicleta y pintando.",
+  "personalidad": {
+    "descripción": "Cami es una persona muy leal, confiable y trabajadora. Siempre está dispuesta a ayudar a los demás y a dar su mejor esfuerzo en cualquier tarea que se le encomiende.",
+    "características": [
+      "práctica",
+      "perseverante",
+      "fiel"
+    ],
+    "debilidades": [
+      "perezoso",
+      "cerrado"
+    ]
+  }
+}

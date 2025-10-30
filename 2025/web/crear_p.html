@@ -1,0 +1,214 @@
+<html>
+
+<head>
+  <title>Lista de tareas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+      font-family: "Schoolbell", cursive;
+    }
+
+    button{
+      font-family: "Schoolbell", cursive;
+    }
+
+    .boton {
+      padding: 4px;
+      border-radius: 0px;
+      border: 0px;
+      border-bottom: 2px solid gray;
+      border-right: 2px solid gray;
+    }
+
+    .boton:hover {
+      box-shadow: 4px 4px 2px royalblue;
+      cursor: pointer;
+    }
+
+    .checkeado p {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .azul {
+      color: cornflowerblue;
+      text-decoration: dashed;
+    }
+
+    .tarea {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid gainsboro;
+      margin: 6px;
+      padding: 4px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .contenedor{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cabecera{
+      font-size: 36px;
+      padding: 20px;
+      background-color: lightgray;
+    }
+
+    .cabecera h2, .cabecera h5{
+      text-align: center;
+      margin: 0;
+    }
+
+
+    .controles{
+      display: flex;
+      gap: 8px;
+    }
+
+    #tareas{
+      height: 600px;
+      display: flex;
+    }
+
+    #pendientes{
+      background-color: burlywood;
+      min-width: 45vw; /* */
+    }
+
+    #cumplidas{
+      background-color:mediumseagreen;
+      min-width: 45vw;
+    }
+  </style>
+
+  <script>
+    function alIngresar() {
+      let texto = document.querySelector("#nombres").value;
+      if (texto == "") {
+        console.warn('Ingresar contenido')
+        return
+      }
+
+      // Creamos la div base
+      let d = document.createElement("div");
+      d.className = "tarea";
+      if (!azul_activo) d.classList.add("azul")
+
+      // Creamos el checkbox
+      let c = document.createElement("input");
+      c.setAttribute("type", "checkbox");
+      c.addEventListener("change", function () {
+        let pendientes = document.querySelector("#pendientes")
+        let cumplidas = document.querySelector("#cumplidas")
+
+        if (c.checked) {
+          pendientes.removeChild(d)
+          cumplidas.appendChild(d)
+          d.classList.add("checkeado");
+        } else {
+          cumplidas.removeChild(d)
+          pendientes.appendChild(d)
+          d.classList.remove("checkeado");
+        }
+      });
+
+      // Creamos el p y le ponemos la tarea
+      let pp = document.createElement("p");
+      pp.textContent = texto;
+
+      // Reseteamos el input
+      document.querySelector("#nombres").value = "";
+
+      // Armamos el arbolito
+      d.appendChild(c);
+      d.appendChild(pp);
+
+      // Agregamos el p a la div
+      if (Math.random() < 0.7){
+        document.querySelector("#pendientes").appendChild(d)
+      }else{
+        document.querySelector("#cumplidas").appendChild(d)
+      }
+    }
+
+    function alPresionar(evt) {
+      if (evt.key == "Enter") {
+        alIngresar();
+        console.log(evt);
+      }
+    }
+
+    let azul_activo = true
+
+    function alClick() {
+      let tds = document.querySelectorAll(".tarea")
+
+      azul_activo = !azul_activo
+
+      tds.forEach(function (t) {
+        // t.classList.toggle("azul")
+
+        // if (t.classList.contains("azul")){
+        //   t.classList.remove("azul")
+        // }else{
+        //   t.classList.add("azul")
+        // }
+
+        if (azul_activo) t.classList.remove("azul")
+        else t.classList.add("azul")
+      })
+    }
+  </script>
+
+  <div class="contenedor">
+
+    <!-- Cabecera -->
+    <div class="cabecera">
+      <h2>Lista de tareas</h2>
+      <h5>Para organizar tu día</h5>
+    </div>
+
+    <!-- Controles -->
+    <div class="controles">
+      <input id="nombres" type="text" placeholder="Escribi tu nombre" onkeypress="alPresionar(event)" />
+      <button onclick="alIngresar()">Ingresar</button>
+      <button onclick="alClick()">
+        <input type="checkbox">
+        Azul
+      </button>
+    </div>
+
+    <div id="tareas">
+      <div>
+        <h3>Pendientes</h3>
+        <div id="pendientes"></div> 
+      </div>
+
+      <div>
+        <h3>Cumplidas ✅</h3>
+        <div id="cumplidas"></div> 
+      </div>
+    </div> <!-- Altura max y overflow-->
+
+    <div class="pie">
+      <h3>Gracias por usar mi app :)</h3>
+    </div>
+  </div>
+
+
+</body>
+
+
+</html>
