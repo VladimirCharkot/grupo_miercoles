@@ -52,6 +52,7 @@
       padding: 4px;
       border-radius: 4px;
       font-family: "Courier New", Courier, monospace;
+      min-width: 45vw;
     }
 
     .contenedor{
@@ -77,19 +78,28 @@
       gap: 8px;
     }
 
-    #tareas{
+    #tareas {
+      
       height: 600px;
       display: flex;
     }
 
-    #pendientes{
-      background-color: burlywood;
-      min-width: 45vw; /* */
-    }
+    #pendientes .tarea{
+      
+      background-color: rgba(222, 184, 135, 0.932); 
 
-    #cumplidas{
-      background-color:mediumseagreen;
+    }
+    #pendientes {
+
       min-width: 45vw;
+    }
+    #cumplidas{
+      min-width: 45vw;
+
+    }
+    #cumplidas .tarea{
+      background-color:mediumseagreen;
+
     }
   </style>
 
@@ -136,11 +146,8 @@
       d.appendChild(pp);
 
       // Agregamos el p a la div
-      if (Math.random() < 0.7){
+
         document.querySelector("#pendientes").appendChild(d)
-      }else{
-        document.querySelector("#cumplidas").appendChild(d)
-      }
     }
 
     function alPresionar(evt) {
