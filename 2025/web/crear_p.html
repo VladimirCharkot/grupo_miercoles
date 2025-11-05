@@ -103,13 +103,60 @@
     }
   </style>
 
-  <script>
-    function alIngresar() {
-      let texto = document.querySelector("#nombres").value;
-      if (texto == "") {
-        console.warn('Ingresar contenido')
-        return
-      }
+
+
+  <div class="contenedor">
+
+    <!-- Cabecera -->
+    <div class="cabecera">
+      <h2>Lista de tareas</h2>
+      <h5>Para organizar tu día</h5>
+    </div>
+
+    <!-- Controles -->
+    <div class="controles">
+      <input id="ingreso" type="text" placeholder="Escribi una tarea" onkeypress="alPresionar(event)" />
+      <button onclick="alIngresar()">Ingresar</button>
+      <button onclick="alClick()">
+        <input type="checkbox">
+        Azul
+      </button>
+    </div>
+
+    <div id="tareas">
+      <div>
+        <h3>Pendientes</h3>
+        <div id="pendientes"></div> 
+      </div>
+
+      <div>
+        <h3>Cumplidas ✅</h3>
+        <div id="cumplidas"></div> 
+      </div>
+    </div> <!-- Altura max y overflow-->
+
+    <div class="pie">
+      <h3>Gracias por usar mi app :)</h3>
+    </div>
+  </div>
+
+    <script>
+    let tareas = []
+    let azul_activo = true
+
+    // Levantamos las tareas que pudiera haber en localStorage
+    const tareasGuardadasEnTexto = localStorage.getItem('tareas')
+    if(tareasGuardadasEnTexto){
+      tareas = JSON.parse(tareasGuardadasEnTexto)
+    } 
+
+    // Renderizamos las tareas que estuvieran guardadas
+    for(t of tareas){
+      console.log(`Renderizando`, t, tareas)
+      crearElementosHTMLDeTarea(t)
+    }
+
+    function crearElementosHTMLDeTarea(tarea){
 
       // Creamos la div base
       let d = document.createElement("div");
@@ -136,18 +183,46 @@
 
       // Creamos el p y le ponemos la tarea
       let pp = document.createElement("p");
-      pp.textContent = texto;
+      pp.textContent = tarea.texto;
 
       // Reseteamos el input
-      document.querySelector("#nombres").value = "";
+      document.querySelector("#ingreso").value = "";
 
       // Armamos el arbolito
       d.appendChild(c);
       d.appendChild(pp);
 
       // Agregamos el p a la div
-
+      if(tarea.completada){
+        document.querySelector("#cumplidas").appendChild(d)
+      }else{
         document.querySelector("#pendientes").appendChild(d)
+      }
+    }
+
+    function alIngresar() {
+
+      // Agarramos el texto del input
+      let texto = document.querySelector("#ingreso").value;
+      if (texto == "") {
+        console.warn('Ingresar contenido')
+        return
+      }
+
+      // Creamos el objeto tarea
+      let tarea = {
+        texto: texto,
+        completada: false
+      }
+
+      // Agregamos el objeto a la lista
+      tareas.push(tarea)
+
+      // Guardamos la lista en memoria
+      localStorage.setItem("tareas", JSON.stringify(tareas))
+
+      // Creamos la tarjeta
+      crearElementosHTMLDeTarea(tarea)
     }
 
     function alPresionar(evt) {
@@ -156,8 +231,6 @@
         console.log(evt);
       }
     }
-
-    let azul_activo = true
 
     function alClick() {
       let tds = document.querySelectorAll(".tarea")
@@ -178,41 +251,6 @@
       })
     }
   </script>
-
-  <div class="contenedor">
-
-    <!-- Cabecera -->
-    <div class="cabecera">
-      <h2>Lista de tareas</h2>
-      <h5>Para organizar tu día</h5>
-    </div>
-
-    <!-- Controles -->
-    <div class="controles">
-      <input id="nombres" type="text" placeholder="Escribi tu nombre" onkeypress="alPresionar(event)" />
-      <button onclick="alIngresar()">Ingresar</button>
-      <button onclick="alClick()">
-        <input type="checkbox">
-        Azul
-      </button>
-    </div>
-
-    <div id="tareas">
-      <div>
-        <h3>Pendientes</h3>
-        <div id="pendientes"></div> 
-      </div>
-
-      <div>
-        <h3>Cumplidas ✅</h3>
-        <div id="cumplidas"></div> 
-      </div>
-    </div> <!-- Altura max y overflow-->
-
-    <div class="pie">
-      <h3>Gracias por usar mi app :)</h3>
-    </div>
-  </div>
 
 
 </body>
