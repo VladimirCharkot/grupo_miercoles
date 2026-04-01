@@ -1,0 +1,33 @@
+{
+  "nombre": "Walt",
+  "edad": 20,
+  "habilidades": [
+    "guitarra",
+    "dibujo",
+    "patín",
+    "pintura"
+  ],
+  "desea aprender": [
+    "jardinería",
+    "gimnasia"
+  ],
+  "detesta": [
+    "piano",
+    "ilustración",
+    "cocina"
+  ],
+  "signo": "Virgo",
+  "presentacion": "Es un joven creativo y versátil que disfruta explorando diferentes expresiones artísticas. Su pasión por la música y el arte es evidente en su habilidad para tocar la guitarra y dibujar con facilidad.",
+  "personalidad": {
+    "descripción": "Juan es una persona analítica y detallista, siempre dispuesto a ayudar y perfeccionar sus tareas. Le encanta aprender nuevas cosas y mejorar continuamente su habilidad en diversas áreas.",
+    "características": [
+      "analítico",
+      "detallista",
+      "leal"
+    ],
+    "debilidades": [
+      "perfectionista",
+      "cerrado"
+    ]
+  }
+}

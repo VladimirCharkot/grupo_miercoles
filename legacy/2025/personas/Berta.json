@@ -1,0 +1,33 @@
+{
+  "nombre": "Berta",
+  "edad": 31,
+  "habilidades": [
+    "jardinería",
+    "dibujo",
+    "pintura",
+    "guitarra"
+  ],
+  "desea aprender": [
+    "circo",
+    "acrobacia"
+  ],
+  "detesta": [
+    "piano",
+    "cocina",
+    "ciclismo"
+  ],
+  "signo": "Acuario",
+  "presentación": "Encuentra a Berta, una apasionada de las artes y la naturaleza. Con su talento para el dibujo y la pintura, y su habilidad en el jardín, es una persona creativa y conectada con la tierra.",
+  "personalidad": {
+    "descripción": "Berta es alguien que se siente cómoda en un entorno tranquilo, pero que también puede ser muy aventurera cuando le apetece. Tiende a enfocarse en sus objetivos a largo plazo y puede ser algo demasiado crítica consigo misma.",
+    "características": [
+      "soñadora",
+      "imaginativa",
+      "leal"
+    ],
+    "debilidades": [
+      "indecisa",
+      "sensitiva"
+    ]
+  }
+}

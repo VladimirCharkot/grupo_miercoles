@@ -1,0 +1,33 @@
+{
+  "nombre": "Rae",
+  "edad": 37,
+  "habilidades": [
+    "guitarra",
+    "gimnasia",
+    "programación",
+    "cocina"
+  ],
+  "desea aprender": [
+    "danza",
+    "piano"
+  ],
+  "detesta": [
+    "artes marciales",
+    "patín",
+    "dibujo"
+  ],
+  "signo": "escorpio",
+  "presentacion": "Es una persona multifacética y apasionada por la creatividad, con intereses que van desde la música hasta la programación. Suele ser reservada pero leal a sus amigos.",
+  "personalidad": {
+    "descripción": "Juan puede resultar un poco impredecible debido a su naturaleza intensa y emocional",
+    "características": [
+      "leal",
+      "intensa",
+      "pasionante"
+    ],
+    "debilidades": [
+      "obsesiva",
+      "cerrada"
+    ]
+  }
+}

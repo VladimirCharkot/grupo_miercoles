@@ -1,0 +1,34 @@
+{
+  "nombre": "Jaz",
+  "edad": 32,
+  "habilidades": [
+    "piano",
+    "pintura",
+    "acrobacia",
+    "artes marciales"
+  ],
+  "desea aprender": [
+    "patín",
+    "dibujo"
+  ],
+  "detesta": [
+    "danza",
+    "guitarra",
+    "programación"
+  ],
+  "signo": "acuario",
+  "presentación": "Es un individuo creativo y versátil con una gran capacidad para expresarse a través de múltiples habilidades. Aunque puede ser tímido, se apunta rápidamente si siente que se le está demandando algo.",
+  "personalidad": {
+    "descripción": "Juan es una persona capaz de adaptarse a diferentes situaciones, tiene un gran sentido de justicia y puede parecer indeciso pero siempre toma la decisión correcta en última instancia.",
+    "características": [
+      "indeciso",
+      "leal",
+      "sensato",
+      "romántico"
+    ],
+    "debilidades": [
+      "timidez",
+      "emoción"
+    ]
+  }
+}

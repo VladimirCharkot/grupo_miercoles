@@ -1,0 +1,33 @@
+{
+  "nombre": "Lau",
+  "edad": 22,
+  "habilidades": [
+    "ciclismo",
+    "jardinería",
+    "circo",
+    "programación"
+  ],
+  "desea aprende": [
+    "ilustración",
+    "cocina"
+  ],
+  "detesta": [
+    "gimnasia",
+    "dibujo",
+    "piano"
+  ],
+  "signo": "Géminis",
+  "presentación": "Lau es un joven en busca de nuevas aventuras. Con una gran habilidad para el ciclismo y la programación, ha demostrado ser versátil en diferentes campos. Su pasión por el jardinería y el circo refleja su lado creativo y espíritu aventurero.",
+  "personalidad": {
+    "descripción": "Juan es una persona leal y comunicativa, con un carisma innato que lo hace destacar en cualquier situación social. Le encanta aprender cosas nuevas y no duda en compartir sus conocimientos con los demás. A pesar de su entusiasmo, puede ser un poco indeciso a la hora de tomar decisiones importantes.",
+    "características": [
+      "curioso",
+      "independiente",
+      "apasionado"
+    ],
+    "debilidades": [
+      "impaciente",
+      "superficial"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "nombre": "Fran",
+  "edad": 26,
+  "habilidades": [
+    "ciclismo",
+    "dibujo",
+    "guitarra",
+    "patín"
+  ],
+  "desea aprender": [
+    "acrobacia",
+    "danza"
+  ],
+  "detesta": [
+    "jardinería",
+    "piano",
+    "artes marciales"
+  ],
+  "signo": "capricornio",
+  "presentación": "Conocemos a Fran, un joven de 26 años que tiene una gran variedad de intereses y habilidades. Aunque todavía está aprendiendo acrobacia y danza, ya demuestra una gran dedicación en sus pasatiempos favoritos.",
+  "personalidad": {
+    "descripción": "Juan es una persona responsable, trabajadora y ambiciosa. Le gusta planificar y organizar su tiempo de manera eficiente. Aunque puede ser un poco demasiado crítica consigo misma, tiene un gran sentido del humor y no duda en sorprender a los demás con alguna broma inesperada.",
+    "características": [
+      "leal",
+      "analítico",
+      "puntual"
+    ],
+    "debilidades": [
+      "insegura",
+      "perfeccionista"
+    ]
+  }
+}

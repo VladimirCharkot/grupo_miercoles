@@ -1,0 +1,10 @@
+A continuación te presento los datos de un personaje generado al azar. Escribe de manera concisa un perfil verosímil para introducirlo, como si fuera una presentación que una tercera persona hace de esta.
+
+Nombre: NOMBRE
+Edad: EDAD
+Habilidades: HABILIDADES
+Desea aprender: DESEA
+Detesta: DETESTA
+Signo: SIGNO
+
+Por favor produce tu salida en formato JSON incluyendo los datos que te dí y agregando la clave 'presentación' donde debe ir tu texto de presentación, y la clave 'personalidad' con un subobjeto con claves 'descripción' (textual, string), 'características' (lista) y 'debilidades' (lista) de su personalidad según su signo zodiacal. Por favor, escribe los elementos de las listas de personalidad en singular ("leal", no "leales", etc) mediante una sola palabra, y en la descripción nombralo por su nombre, no por el nombre del signo ("Juan es una persona tal y tal..." y no "Un escorpio es una persona tal y tal..."). Provee SOLO el json, sin marcas de sintaxis (por ejemplo, sin ``` ni al comienzo ni al final) ni texto adicionales. Gracias!

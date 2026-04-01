@@ -1,0 +1,33 @@
+{
+  "nombre": "Uma",
+  "edad": 37,
+  "habilidades": [
+    "pintura",
+    "guitarra",
+    "patín",
+    "programación"
+  ],
+  "desea aprender": [
+    "piano",
+    "jardinería"
+  ],
+  "detesta": [
+    "acrobacia",
+    "circo",
+    "cocina"
+  ],
+  "signo": "capricornio",
+  "presentacion": "Me gustaría presentar a Uma, una persona multifacética que combina su pasión por el arte con su habilidad para programar. Su creatividad y sentido de la innovación hacen que sea un interlocutor interesante.",
+  "personalidad": {
+    "descripcion": "Juan es alguien muy práctico y metódico, pero también tiene un lado artístico y aprecia lo que es bello. Aunque puede ser tenaz a veces",
+    "características": [
+      "leal",
+      "puntual",
+      "analítico"
+    ],
+    "debilidades": [
+      "orgulloso",
+      "perfeccionista"
+    ]
+  }
+}

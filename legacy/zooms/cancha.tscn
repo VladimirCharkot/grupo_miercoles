@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnr3ua706pyi2"]
+
+[ext_resource type="Script" path="res://cancha.gd" id="1_7pxfk"]
+[ext_resource type="Texture2D" uid="uid://bj6ldmfior5lb" path="res://cancha.jpg" id="1_eii8h"]
+[ext_resource type="Texture2D" uid="uid://blcyogcw12rgb" path="res://icon.svg" id="2_im5s1"]
+
+[node name="Cancha" type="Node2D"]
+script = ExtResource("1_7pxfk")
+
+[node name="Cancha" type="Sprite2D" parent="."]
+position = Vector2(558, 310)
+texture = ExtResource("1_eii8h")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(552, 307)
+texture = ExtResource("2_im5s1")
+
+[node name="Camera2D" type="Camera2D" parent="Icon"]
+zoom = Vector2(0.07, 0.07)

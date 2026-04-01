@@ -1,0 +1,33 @@
+{
+  "nombre": "Noe",
+  "edad": 38,
+  "habilidades": [
+    "pintura",
+    "guitarra",
+    "gimnasia",
+    "jardinería"
+  ],
+  "desea aprender": [
+    "artes marciales",
+    "piano"
+  ],
+  "detesta": [
+    "danza",
+    "programación",
+    "ilustración"
+  ],
+  "signo": "Leo",
+  "presentación": "Me gustaría presentar a Noe, un artista versátil y apasionado. Con 38 años de edad, ha desarrollado habilidades en pintura, guitarra, gimnasia y jardinería. Está ansioso por aprender arte marcial y tocar el piano.",
+  "personalidad": {
+    "descripción": "Noe es un líder natural, siempre dispuesto a asumir el control y tomar decisiones. Su confianza en sí mismo puede llegar a ser excesiva, lo que lleva a momentos de orgullo y soberbia.",
+    "características": [
+      "ambicioso",
+      "confiado",
+      "leal"
+    ],
+    "debilidades": [
+      "arrogante",
+      "dominante"
+    ]
+  }
+}

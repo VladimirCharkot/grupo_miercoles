@@ -1,0 +1,33 @@
+{
+  "nombre": "Hele",
+  "edad": 36,
+  "habilidades": [
+    "programación",
+    "patín",
+    "dibujo",
+    "jardinería"
+  ],
+  "desea aprender": [
+    "ciclismo",
+    "danza"
+  ],
+  "detesta": [
+    "pintura",
+    "ilustración",
+    "piano"
+  ],
+  "signo": "sagitario",
+  "presentación": "Conoce a Hele, una persona apasionada por la tecnología y el deporte. Con 36 años de edad, Hele es una mujer versátil que combina su talento para la programación con sus aficiones por el patín y el dibujo.",
+  "personalidad": {
+    "descripción": "Hele es una persona aventurera y enérgica, siempre dispuesta a tomar riesgos y enfrentar nuevos desafíos. Su espíritu aventurero la lleva a perseguir metas ambiciosas y no se detiene ante obstáculos.",
+    "características": [
+      "curiosa",
+      "confiada",
+      "entusiasta"
+    ],
+    "debilidades": [
+      "pérdida de atención",
+      "impatencia"
+    ]
+  }
+}

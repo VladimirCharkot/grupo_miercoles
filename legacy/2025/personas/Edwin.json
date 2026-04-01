@@ -1,0 +1,35 @@
+{
+  "nombre": "Edwin",
+  "edad": 28,
+  "habilidades": [
+    "jardinería",
+    "programación",
+    "circo",
+    "ilustración"
+  ],
+  "desea aprender": [
+    "patín",
+    "dibujo"
+  ],
+  "detesta": [
+    "danza",
+    "ciclismo",
+    "cocina"
+  ],
+  "signo": "acuario",
+  "presentación": "Edwin es un joven versátil y creativo que disfruta de una variedad de actividades. Con su experiencia en jardinería, programación y circo, siempre está dispuesto a aprender algo nuevo.",
+  "personalidad": {
+    "descripción": "Edwin es una persona leal y emotiva que se siente conectado con la naturaleza. A pesar de su apariencia introvertida, tiene un lado artístico que disfruta expresando de manera creativa",
+    "características": [
+      "curioso",
+      "imaginativo",
+      "emotivo",
+      "leal"
+    ],
+    "debilidades": [
+      "indeciso",
+      "sensible",
+      "idealista"
+    ]
+  }
+}
