@@ -1,0 +1,120 @@
+const riquelme = {
+  nombre: "Juan Román Riquelme",
+  talle: "M",
+  edad: 45,
+  rol: "mediocampista",
+};
+
+const messi = {
+  nombre: "Lionel Messi",
+  talle: "S",
+  edad: 36,
+  rol: "delantero",
+};
+
+const cristiano = {
+  nombre: "Cristiano Ronaldo",
+  talle: "L",
+  edad: 38,
+  rol: "delantero",
+};
+
+const montiel = {
+  nombre: "Gonzalo Montiel",
+  talle: "M",
+  edad: 26,
+  rol: "defensa",
+};
+
+const mbappe = {
+  nombre: "Kylian Mbappé",
+  talle: "M",
+  edad: 24,
+  rol: "delantero",
+};
+
+const pedri = {
+  nombre: "Pedri González",
+  talle: "S",
+  edad: 20,
+  rol: "mediocampista",
+};
+
+const pezzella = {
+  nombre: "Germán Pezzella",
+  talle: "L",
+  edad: 32,
+  rol: "defensa",
+};
+
+// Arqueros
+const dibu_martinez = {
+  nombre: "Emiliano Martínez",
+  talle: "L",
+  edad: 31,
+  rol: "arquero",
+};
+
+const courtois = {
+  nombre: "Thibaut Courtois",
+  talle: "XL",
+  edad: 31,
+  rol: "arquero",
+};
+
+// Defensas adicionales
+const marquinhos = {
+  nombre: "Marquinhos",
+  talle: "M",
+  edad: 29,
+  rol: "defensa",
+};
+
+const van_dijk = {
+  nombre: "Virgil van Dijk",
+  talle: "XL",
+  edad: 32,
+  rol: "defensa",
+};
+
+// Mediocampistas adicionales
+const de_bruyne = {
+  nombre: "Kevin De Bruyne",
+  talle: "L",
+  edad: 32,
+  rol: "mediocampista",
+};
+
+const modric = {
+  nombre: "Luka Modrić",
+  talle: "S",
+  edad: 38,
+  rol: "mediocampista",
+};
+
+// Delanteros adicionales
+const haaland = {
+  nombre: "Erling Haaland",
+  talle: "XL",
+  edad: 23,
+  rol: "delantero",
+};
+
+const benzema = {
+  nombre: "Karim Benzema",
+  talle: "L",
+  edad: 36,
+  rol: "delantero",
+};
+
+const jugadores = [
+  riquelme, messi, cristiano, montiel, mbappe, pedri, pezzella,
+  dibu_martinez, courtois, marquinhos, van_dijk, de_bruyne, modric,
+  haaland, benzema
+];
+
+export { 
+  riquelme, messi, cristiano, montiel, mbappe, pedri, pezzella,
+  dibu_martinez, courtois, marquinhos, van_dijk, de_bruyne, modric,
+  haaland, benzema, jugadores 
+};
