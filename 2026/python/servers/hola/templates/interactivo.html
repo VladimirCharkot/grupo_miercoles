@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dado Interactivo</title>
+    <style>
+      body { font-family: Arial; max-width: 400px; margin: 50px auto; text-align: center; }
+      button { padding: 12px 24px; font-size: 1.2rem; cursor: pointer; }
+      #resultado { font-size: 4rem; margin: 30px 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Tirar el dado</h1>
+
+    <button onclick="tirar()">Tirar</button>
+
+    <div id="resultado">-</div>
+
+    <script>
+      async function tirar() {
+        // fetch hace un POST a /random
+        const respuesta = await fetch('/random', { method: 'POST' })
+        // .json() parsea el body de la respuesta
+        const datos = await respuesta.json()
+        // actualizamos el label con el valor
+        document.getElementById('resultado').textContent = datos.dado
+      }
+    </script>
+  </body>
+</html>

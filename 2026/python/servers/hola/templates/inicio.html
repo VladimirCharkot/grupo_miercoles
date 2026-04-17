@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Servidor de Visitas</title>
+    <style>
+      body { font-family: Arial; max-width: 600px; margin: 50px auto; }
+      input, button { padding: 10px; margin: 5px; }
+    </style>
+  </head>
+  <body>
+    <h1>Registro de Visitas</h1>
+    <form action="/registrar" method="GET">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <button type="submit">Registrarme</button>
+    </form>
+    <h2>Visitas recientes:</h2>
+    <ul>
+      {% for v in visitas %}
+        <li>#{{ v.numero }}: {{ v.nombre }} a las {{ v.hora }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
