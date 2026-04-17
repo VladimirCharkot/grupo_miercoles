@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex - Página</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .header {
+      background: #264653;
+      height: 80px;
+      border-radius: 10px;
+    }
+
+    .medio {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .sidebar {
+      background: #2a9d8f;
+      width: 220px;
+      border-radius: 10px;
+    }
+
+    .contenido {
+      background: #e9c46a;
+      flex: 1;
+      border-radius: 10px;
+
+    }
+
+    .footer {
+      background: #e76f51;
+      height: 60px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header"></div>
+
+  <div class="medio">
+    <div class="sidebar"></div>
+    <div class="contenido"></div>
+  </div>
+
+  <div class="footer"></div>
+</body>
+</html>

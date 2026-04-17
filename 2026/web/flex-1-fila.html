@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex - Fila</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    .contenedor {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+
+      overflow-x: auto;
+    }
+
+    .tarjeta {
+      flex: 1;
+      height: 200px;
+      width: 200px;
+
+      min-width: 200px;
+      max-width: 200px;
+      /* border-radius: 12px; */
+    }
+
+    .tarjeta:nth-child(1) { background: #e07a5f; }
+    .tarjeta:nth-child(2) { background: #3d405b; }
+    .tarjeta:nth-child(3) { background: #81b29a; }
+    .tarjeta:nth-child(4) { background: #f2cc8f; }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+  </div>
+</body>
+</html>

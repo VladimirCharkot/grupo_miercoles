@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex - Completo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+      min-height: 100vh;
+
+      max-height: 100vh;
+    }
+
+    .header {
+      background: #264653;
+      height: 80px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .medio {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .sidebar {
+      background: #2a9d8f;
+      width: 220px;
+      border-radius: 10px;
+    }
+
+    .contenedor{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contenido {
+      background: #dde3ea;
+      flex: 1;
+      border-radius: 10px;
+      padding: 20px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-content: flex-start;
+
+      /* max-height: 650px; */
+      overflow-y: auto;
+    }
+
+    .tarjeta {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+    }
+
+    .tarjeta:nth-child(3n) { background: #e63946; }
+    .tarjeta:nth-child(3n+1) { background: #457b9d; }
+    .tarjeta:nth-child(3n+2) { background: #2a9d8f; }
+
+    .footer {
+      background: #e76f51;
+      height: 60px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .texto{
+      color: rgb(65, 23, 23);
+      padding: 8px;
+      border: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function agregarTarjeta(){
+      console.log('HOLA')
+      // Creamos una div en la memoria
+      let nueva_div = document.createElement("div")
+
+      // Le ponemos una clase
+      nueva_div.className = "tarjeta"
+
+      // Agarramos el contenido
+      const contenedor_tarjetas = document.querySelector(".contenido")
+
+      // Agregamos el elemento creado a la div de contenido
+      contenedor_tarjetas.appendChild(nueva_div)
+    }
+  </script>
+
+  <div class="body">
+  <div class="header"></div>
+
+  <div class="medio">
+    <div class="sidebar">
+      <div class="texto">Uno</div>
+      <div class="texto">Dos</div>
+      <div class="texto">Tres</div>
+      <div class="texto">Cuatro</div>
+      <div class="texto">Uno</div>
+    </div>
+
+
+    <div class="contenedor">
+      <div class="contenido">
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+        <div class="tarjeta"></div>
+      </div>
+      <button onclick="agregarTarjeta()">Agregar</button>
+    </div>
+
+    
+  </div>
+
+  <div class="footer"></div>
+  </div>
+</body>
+</html>

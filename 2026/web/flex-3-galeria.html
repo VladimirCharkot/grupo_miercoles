@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex - Galería</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      background: #1a1a2e;
+      padding: 40px;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .tarjeta {
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+    }
+
+    .tarjeta:nth-child(1)  { background: #e63946; }
+    .tarjeta:nth-child(2)  { background: #457b9d; }
+    .tarjeta:nth-child(3)  { background: #2a9d8f; }
+    .tarjeta:nth-child(4)  { background: #e9c46a; }
+    .tarjeta:nth-child(5)  { background: #f4a261; }
+    .tarjeta:nth-child(6)  { background: #a8dadc; }
+    .tarjeta:nth-child(7)  { background: #6d6875; }
+    .tarjeta:nth-child(8)  { background: #b5e48c; }
+  </style>
+</head>
+<body>
+  <div class="galeria">
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+    <div class="tarjeta"></div>
+  </div>
+</body>
+</html>
