@@ -1,11 +1,14 @@
 const server = Bun.serve({
   port: 3333,
-  fetch: (req) => {
-    const url = new URL(req.url);
+  fetch: (peticion) => {
+    const url = new URL(peticion.url);
 
     if (url.pathname === "/") {
       // return new Response("Hola :D");
-      return new Response("<html><head></head><body><h1>Holaaa :D</h1></body></html>", { headers: { "Content-Type": "text/html" } });
+      return new Response(
+        "<html><head></head><body><h1>Holaaa :D</h1></body></html>", {
+        headers: { "Content-Type": "text/html" }
+      });
     }
 
     if (url.pathname === "/cosoco") {

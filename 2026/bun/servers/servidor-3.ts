@@ -5,7 +5,7 @@ const servidor = Bun.serve({
   port: 3000,
 
   fetch(peticion) {
-    contadorAccesos++;
+    contadorAccesos += 1;
 
     const url = new URL(peticion.url);
     console.log(`[${contadorAccesos}] ${peticion.method} ${url.pathname}`);
