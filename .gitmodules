@@ -1,0 +1,9 @@
+[submodule "legacy/clase_web"]
+	path = legacy/clase_web
+	url = https://github.com/Jeremias-Pellegrino/clase_web.git
+[submodule "legacy/grupo_miercoles"]
+	path = legacy/grupo_miercoles
+	url = https://github.com/VladimirCharkot/grupo_miercoles.git
+[submodule "legacy/nuevo_repo_clase"]
+	path = legacy/nuevo_repo_clase
+	url = https://github.com/Jeremias-Pellegrino/nuevo_repo_clase.git
