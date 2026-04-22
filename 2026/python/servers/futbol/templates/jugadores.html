@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fulbacho</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .topbar {
+      background: #264653;
+      color: white;
+      height: 60px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .medio {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .sidebar {
+      background: #2a9d8f;
+      width: 220px;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      color: white;
+      padding: 10px 8px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .sidebar li:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .sidebar li.activo {
+      background: rgba(255, 255, 255, 0.35);
+      font-weight: bold;
+    }
+
+    .content {
+      background: white;
+      flex: 1;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .content h2 {
+      margin-bottom: 16px;
+      color: #264653;
+    }
+
+    .content p {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .footer {
+      background: #264653;
+      color: white;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Fulbacho</div>
+
+  <div class="medio">
+
+    <div class="sidebar">
+      <ul id="lista-jugadores">
+        {% for jugador in jugadores %}
+          <li data-index="{{ loop.index0 }}">{{ jugador.nombre }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="content" id="content">
+      <p>Seleccioná un jugador de la lista.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">Fulbacho &copy; 2026</div>
+
+  <script>
+    const lista = document.getElementById('lista-jugadores');
+    const content = document.getElementById('content');
+
+    lista.addEventListener('click', function(evento) {
+      const itemClickeado = evento.target;
+
+      // Marcamos el item clickeado como activo
+      const itemAnterior = lista.querySelector('.activo');
+      if (itemAnterior) {
+        itemAnterior.classList.remove('activo');
+      }
+      itemClickeado.classList.add('activo');
+
+      // Pedimos la info del jugador al servidor
+      const indice = itemClickeado.getAttribute('data-index');
+
+      fetch('/jugadores/' + indice)
+        .then(function(respuesta) {
+          return respuesta.json();
+        })
+        .then(function(jugador) {
+          // Limpiamos el contenido anterior
+          content.innerHTML = '';
+
+          // Construimos el contenido con los datos que llegaron del servidor
+          const nombre = document.createElement('h2');
+          nombre.textContent = jugador.nombre;
+          content.appendChild(nombre);
+
+          const rol = document.createElement('p');
+          rol.textContent = 'Rol: ' + jugador.rol;
+          content.appendChild(rol);
+
+          const edad = document.createElement('p');
+          edad.textContent = 'Edad: ' + jugador.edad + ' años';
+          content.appendChild(edad);
+
+          const talle = document.createElement('p');
+          talle.textContent = 'Talle: ' + jugador.talle;
+          content.appendChild(talle);
+        });
+    });
+  </script>
+
+</body>
+</html>
