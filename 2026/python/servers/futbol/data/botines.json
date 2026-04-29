@@ -1,0 +1,17 @@
+[
+  { "nombre": "Nike Mercurial Vapor", "talle": "M", "precio": 150 },
+  { "nombre": "Puma Future Z", "talle": "L", "precio": 120 },
+  { "nombre": "Adidas Copa Sense", "talle": "M", "precio": 130 },
+  { "nombre": "Nike Phantom GT", "talle": "S", "precio": 140 },
+  { "nombre": "Puma Ultra", "talle": "S", "precio": 110 },
+  { "nombre": "Adidas Predator Edge", "talle": "S", "precio": 140 },
+  { "nombre": "Nike Tiempo Legend", "talle": "XL", "precio": 160 },
+  { "nombre": "Nike Mercurial Superfly", "talle": "L", "precio": 180 },
+  { "nombre": "Adidas X Ghosted", "talle": "XL", "precio": 135 },
+  { "nombre": "Adidas Nemeziz", "talle": "L", "precio": 125 },
+  { "nombre": "Puma King Platinum", "talle": "M", "precio": 115 },
+  { "nombre": "Puma One", "talle": "XL", "precio": 105 },
+  { "nombre": "Umbro Velocita", "talle": "S", "precio": 90 },
+  { "nombre": "Mizuno Morelia Neo", "talle": "M", "precio": 170 },
+  { "nombre": "New Balance Furon", "talle": "L", "precio": 100 }
+]

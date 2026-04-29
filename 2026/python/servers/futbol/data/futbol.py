@@ -1,6 +1,19 @@
+import json
 from random import sample
-from jugadores import jugadores, riquelme, messi, cristiano, dibu_martinez
-from botines import botines, botines_nike
+
+with open('jugadores.json', encoding='utf-8') as f:
+    jugadores = json.load(f)
+
+with open('botines.json', encoding='utf-8') as f:
+    botines = json.load(f)
+
+def _buscar(lista, nombre):
+    return next(j for j in lista if j['nombre'] == nombre)
+
+riquelme      = _buscar(jugadores, 'Juan Román Riquelme')
+messi         = _buscar(jugadores, 'Lionel Messi')
+cristiano     = _buscar(jugadores, 'Cristiano Ronaldo')
+dibu_martinez = _buscar(jugadores, 'Emiliano Martínez')
 
 # Función de puntaje
 def puntaje_jugador(jugador):

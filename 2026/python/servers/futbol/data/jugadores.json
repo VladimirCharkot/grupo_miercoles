@@ -1,0 +1,15 @@
+[
+  { "nombre": "Juan Román Riquelme", "talle": "M", "edad": 45, "rol": "mediocampista" },
+  { "nombre": "Lionel Messi", "talle": "S", "edad": 36, "rol": "delantero" },
+  { "nombre": "Cristiano Ronaldo", "talle": "L", "edad": 38, "rol": "delantero" },
+  { "nombre": "Gonzalo Montiel", "talle": "M", "edad": 26, "rol": "defensa" },
+  { "nombre": "Kylian Mbappé", "talle": "M", "edad": 24, "rol": "delantero" },
+  { "nombre": "Pedri González", "talle": "S", "edad": 20, "rol": "mediocampista" },
+  { "nombre": "Germán Pezzella", "talle": "L", "edad": 32, "rol": "defensa" },
+  { "nombre": "Emiliano Martínez", "talle": "L", "edad": 31, "rol": "arquero" },
+  { "nombre": "Thibaut Courtois", "talle": "XL", "edad": 31, "rol": "arquero" },
+  { "nombre": "Marquinhos", "talle": "M", "edad": 29, "rol": "defensa" },
+  { "nombre": "Virgil van Dijk", "talle": "XL", "edad": 32, "rol": "defensa" },
+  { "nombre": "Kevin De Bruyne", "talle": "L", "edad": 32, "rol": "mediocampista" },
+  { "nombre": "Luka Modrić", "talle": "S", "edad": 38, "rol": "mediocampista" }
+]
