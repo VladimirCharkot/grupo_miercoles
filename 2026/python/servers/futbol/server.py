@@ -25,6 +25,10 @@ def lista_jugadores():
   # To do: Renderizar solo los jugadores del talle/edad que me pidan!
   
   return render_template('jugadores.html', jugadores=jugadores)
+# Versión 2: el servidor solo renderiza los nombres, el JS pide la info al servidor
+@app.route('/botines')
+def lista_jugadores():
+  return render_template('botines.html', jugadores=jugadores)
 
 @app.route('/jugadores/<int:indice>')
 def jugador(indice):
