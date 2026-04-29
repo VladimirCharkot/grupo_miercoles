@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo jugador</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .topbar {
+      background: #264653;
+      color: white;
+      height: 60px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    form {
+      background: white;
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+    }
+
+    form h2 {
+      color: #264653;
+      margin-bottom: 4px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    input, select {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    button {
+      background: #2a9d8f;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover { background: #21867a; }
+
+    .mensaje {
+      background: #e6f4f1;
+      border-radius: 6px;
+      padding: 12px;
+    }
+
+    .footer {
+      background: #264653;
+      color: white;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Fulbacho</div>
+
+  {% if mensaje %}
+    <div class="mensaje">{{ mensaje }}</div>
+  {% endif %}
+
+  <form method="POST" action="/jugador">
+    <h2>Nuevo jugador</h2>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" id="nombre" placeholder="Ej: Messi" required>
+
+    <label for="rol">Rol</label>
+    <input type="text" name="rol" id="rol" placeholder="Ej: Delantero">
+
+    <label for="edad">Edad</label>
+    <input type="number" name="edad" id="edad" placeholder="Ej: 25" min="1" max="99">
+
+    <label for="talle">Talle</label>
+    <select name="talle" id="talle">
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M" selected>M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+    </select>
+
+    <button type="submit">Agregar jugador</button>
+  </form>
+
+  <div class="footer">Fulbacho &copy; 2026</div>
+
+</body>
+</html>
