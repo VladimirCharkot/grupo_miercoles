@@ -21,23 +21,30 @@ def inicio():
 
 # Versión 2: el servidor solo renderiza los nombres, 
 # el JS pide la info de detalles del jugador al servidor
-@app.route('/jugadores')
+@app.route(f'/jugadores')
 def lista_jugadores():
   print(request.user_agent)
-  nombre = request.args.get('nombre')
-  print('En el query llegó el nombre:', nombre)
+  talle = request.args.get('talle')
+  print('En el query llegó el talle:', talle)
   
   # To do: Renderizar solo los jugadores del talle/edad que me pidan!
-  
-  return render_template('jugadores.html', jugadores=jugadores)
+  elegidos = []
+  for j in jugadores:
+     if j['talle'] == talle:
+        elegidos.append(j)
+        print(f'se sumó al equipo {j['nombre']} de talle {j['talle']}')
+  return render_template('jugadores.html', jugadores=elegidos)
 
 @app.route('/botines')
 def lista_botines():
   return render_template('botines.html', botines=botines )
 
-@app.route('/jugadores/<int:indice>')
-def jugador(indice):
-    return jsonify(jugadores[indice])
+
+@app.route('/jugadores/<nombre>')
+def jugador(nombre):
+    for j in jugadores:
+       if j['nombre'] == nombre:
+          return jsonify(j)
 
 @app.route('/jugador', methods=['GET'])
 def formulario_jugador():

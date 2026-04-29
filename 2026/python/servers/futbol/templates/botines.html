@@ -97,9 +97,9 @@
   <div class="medio">
 
     <div class="sidebar">
-      <ul id="lista-jugadores">
-        {% for jugador in jugadores %}
-          <li data-nombre="{{ jugador.nombre }}">{{ jugador.nombre }}</li>
+      <ul id="lista-botines">
+        {% for b in botines %}
+          <li data-index="{{ loop.index0 }}">{{ b.nombre }}</li>
         {% endfor %}
       </ul>
     </div>
@@ -113,47 +113,45 @@
   <div class="footer">Fulbacho &copy; 2026</div>
 
   <script>
-    const lista = document.getElementById('lista-jugadores');
-    const content = document.getElementById('content');
+    // Los datos vienen del servidor como JSON
+    const botines = {{ botines | tojson }};
+
+    const lista = document.querySelector('#lista-botines');
+    const content = document.querySelector('.content');
 
     lista.addEventListener('click', function(evento) {
       const itemClickeado = evento.target;
 
-      // Marcamos el item clickeado como activo
+      // Marcamos el item clickeado como activo (y sacamos el anterior)
       const itemAnterior = lista.querySelector('.activo');
       if (itemAnterior) {
         itemAnterior.classList.remove('activo');
       }
       itemClickeado.classList.add('activo');
 
-      // Pedimos la info del jugador al servidor
-      const indice = itemClickeado.getAttribute('data-nombre');
+      // Buscamos al jugador usando el índice guardado en data-index
+      const indice = itemClickeado.getAttribute('data-index');
+      const botin = botines[indice];
 
-      fetch('/jugadores/' + indice)
-        .then(function(respuesta) {
-          return respuesta.json();
-        })
-        .then(function(jugador) {
-          // Limpiamos el contenido anterior
-          content.innerHTML = '';
+      // Limpiamos el contenido anterior
+      content.innerHTML = '';
 
-          // Construimos el contenido con los datos que llegaron del servidor
-          const nombre = document.createElement('h2');
-          nombre.textContent = jugador.nombre;
-          content.appendChild(nombre);
+      // Creamos y agregamos los elementos con la info del jugador
+      const nombre = document.createElement('h2');
+      nombre.textContent = botin.nombre;
+      content.appendChild(nombre);
 
-          const rol = document.createElement('p');
-          rol.textContent = 'Rol: ' + jugador.rol;
-          content.appendChild(rol);
+      const precio = document.createElement('p');
+      precio.textContent = 'Precio: $' + botin.precio;
+      content.appendChild(precio);
 
-          const edad = document.createElement('p');
-          edad.textContent = 'Edad: ' + jugador.edad + ' años';
-          content.appendChild(edad);
+    //   const edad = document.createElement('p');
+    //   edad.textContent = 'Edad: ' + botin.edad + ' años';
+    //   content.appendChild(edad);
 
-          const talle = document.createElement('p');
-          talle.textContent = 'Talle: ' + jugador.talle;
-          content.appendChild(talle);
-        });
+      const talle = document.createElement('p');
+      talle.textContent = 'Talle: ' + botin.talle;
+      content.appendChild(talle);
     });
   </script>
 
