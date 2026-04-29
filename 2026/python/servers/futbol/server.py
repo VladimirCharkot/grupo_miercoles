@@ -18,9 +18,11 @@ def inicio():
 # el JS pide la info de detalles del jugador al servidor
 @app.route('/jugadores')
 def lista_jugadores():
-  print('🔍 Solicitando jugadores con args:', request.args.to_dict())
+  print(request.user_agent)
+  nombre = request.args.get('nombre')
+  print('En el query llegó el nombre:', nombre)
   
-  # To do: Renderizar solo los jugadores del talle que me pidan!
+  # To do: Renderizar solo los jugadores del talle/edad que me pidan!
   
   return render_template('jugadores.html', jugadores=jugadores)
 
