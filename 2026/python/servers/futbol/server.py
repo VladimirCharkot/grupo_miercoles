@@ -7,7 +7,12 @@ def cargar_jugadores():
   with open('data/jugadores.json', encoding='utf-8') as f:
     return json.load(f)
   
+def cargar_botines():
+   with open('data/botines.json', encoding='utf-8') as x:
+      return json.load(x)
+
 jugadores = cargar_jugadores()
+botines = cargar_botines()
 
 # Versión 1: el servidor convierte los datos a JSON y el JS los usa directamente
 @app.route('/')
@@ -25,6 +30,10 @@ def lista_jugadores():
   # To do: Renderizar solo los jugadores del talle/edad que me pidan!
   
   return render_template('jugadores.html', jugadores=jugadores)
+
+@app.route('/botines')
+def lista_botines():
+  return render_template('botines.html', botines=botines )
 
 @app.route('/jugadores/<int:indice>')
 def jugador(indice):
