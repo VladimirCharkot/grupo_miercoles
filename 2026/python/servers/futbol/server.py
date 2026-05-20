@@ -1,5 +1,6 @@
 import json
 from flask import Flask, render_template, jsonify, request
+from data.football_api import get_tabla_de_posiciones, get_competiciones, get_equipos, get_equipo
 
 app = Flask(__name__)
 
@@ -19,16 +20,22 @@ def inicio():
 @app.route('/jugadores')
 def lista_jugadores():
   print(request.user_agent)
-  nombre = request.args.get('nombre')
-  print('En el query llegó el nombre:', nombre)
-  
+  talle2 = request.args.get('talle')
+  edad2 = request.args.get('edadmax')  
+  lista = []
+
+  for i in jugadores:
+     if edad2 and int(edad2) >= i["edad"] and  talle2 == i["talle"]:
+      
+        lista.append(i)
+    
+    
+  print('En el query llegó el nombre:', lista)
+#  if talle 
   # To do: Renderizar solo los jugadores del talle/edad que me pidan!
   
-  return render_template('jugadores.html', jugadores=jugadores)
+  return render_template('jugadores.html', jugadores=lista)
 # Versión 2: el servidor solo renderiza los nombres, el JS pide la info al servidor
-@app.route('/botines')
-def lista_jugadores():
-  return render_template('botines.html', jugadores=jugadores)
 
 @app.route('/jugadores/<int:indice>')
 def jugador(indice):
@@ -49,9 +56,50 @@ def crear_jugador():
     jugadores.append(datos) # Guardamos el jugador en MEMORIA
 
     # To do: guardar el jugador en el archivo JSON para que persista aunque se reinicie el servidor
-
+    with open('data/jugadores.json',mode="w",encoding='utf-8') as x:
+        json.dump(jugadores, x)
     return render_template('nuevo_jugador.html', mensaje=f"✅ Jugador agregado: {datos['nombre']}")
+
+@app.route('/api/competiciones')
+def competiciones():
+    return jsonify(get_competiciones())
+
+@app.route('/api/competiciones/equipos')
+def equipos():
+    return jsonify(get_equipos('CL')) # CL = Champions League
+
+@app.route('/api/equipos/<int:id_equipo>')
+def equipo(id_equipo):
+    return jsonify(get_equipo(id_equipo))
+
+@app.route('/api/posiciones')
+def posiciones():
+    return jsonify(get_tabla_de_posiciones('CL'))
+
+#-----------------------------------------------------------------
+def cargar_botines():
+  with open('data/botines.json', encoding='utf-8') as f:
+    return json.load(f)
+
+botiness = cargar_botines()
+
+@app.route('/botines')
+def botines():
+  return render_template('botines.html', botines=botiness)
+
+@app.route('/botines/<int:indice>')
+def botin(indice):
+    return jsonify(botiness[indice])
+#-----------------------------------------------------------------
+
 
 if __name__ == '__main__':
     print('🚀 Servidor en http://localhost:3005')
     app.run(port=3005, debug=True)
+
+
+
+
+
+
+
