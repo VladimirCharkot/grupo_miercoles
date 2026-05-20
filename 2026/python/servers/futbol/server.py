@@ -1,5 +1,6 @@
 import json
 from flask import Flask, render_template, jsonify, request
+from data.football_api import get_tabla_de_posiciones, get_competiciones, get_equipos, get_equipo
 
 app = Flask(__name__)
 
@@ -47,6 +48,23 @@ def crear_jugador():
     # To do: guardar el jugador en el archivo JSON para que persista aunque se reinicie el servidor
 
     return render_template('nuevo_jugador.html', mensaje=f"✅ Jugador agregado: {datos['nombre']}")
+
+@app.route('/api/competiciones')
+def competiciones():
+    return jsonify(get_competiciones())
+
+@app.route('/api/competiciones/equipos')
+def equipos():
+    return jsonify(get_equipos('CL')) # CL = Champions League
+
+@app.route('/api/equipos/<int:id_equipo>')
+def equipo(id_equipo):
+    return jsonify(get_equipo(id_equipo))
+
+@app.route('/api/posiciones')
+def posiciones():
+    return jsonify(get_tabla_de_posiciones('CL'))
+
 
 if __name__ == '__main__':
     print('🚀 Servidor en http://localhost:3005')
