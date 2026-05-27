@@ -70,8 +70,12 @@ def equipos():
 
 @app.route('/api/equipos/<int:id_equipo>')
 def equipo(id_equipo):
-    return jsonify(get_equipo(id_equipo))
-
+    codigo = id_equipo = request.args.get('codigo')
+    data = get_competiciones()
+    if codigo == 'WC':
+        for i in data["competitions"]:
+            if i["code"] == codigo:
+                 return jsonify(get_equipo(id_equipo))
 @app.route('/api/posiciones')
 def posiciones():
     return jsonify(get_tabla_de_posiciones('CL'))
