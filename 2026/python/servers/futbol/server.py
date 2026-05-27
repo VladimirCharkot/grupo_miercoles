@@ -15,6 +15,10 @@ jugadores = cargar_jugadores()
 def inicio():
   return render_template('inicio.html', jugadores=jugadores)
 
+@app.route('/competiciones')
+def competiciones_render():
+  return render_template('competiciones.html', competiciones=get_competiciones())
+
 # Versión 2: el servidor solo renderiza los nombres, 
 # el JS pide la info de detalles del jugador al servidor
 @app.route('/jugadores')
@@ -99,7 +103,7 @@ def botin(indice):
 
 if __name__ == '__main__':
     print('🚀 Servidor en http://localhost:3005')
-    app.run(port=3005, debug=True)
+    app.run(host='0.0.0.0', port=3005, debug=True)
 
 
 
