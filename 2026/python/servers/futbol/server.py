@@ -65,6 +65,11 @@ def crear_jugador():
 
     return render_template('nuevo_jugador.html', mensaje=f"✅ Jugador agregado: {datos['nombre']}")
 
+@app.route('/competiciones')
+def pagina_competiciones():
+    datos = get_competiciones()
+    return render_template('competiciones.html', competiciones=datos['competitions'])
+
 @app.route('/api/competiciones')
 def competiciones():
     return jsonify(get_competiciones())
