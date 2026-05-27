@@ -8,7 +8,18 @@ def cargar_jugadores():
   with open('data/jugadores.json', encoding='utf-8') as f:
     return json.load(f)
   
+def cargar_botines():
+   with open('data/botines.json', encoding='utf-8') as x:
+      return json.load(x)
+
+def cargar_codigos():
+   with open('football.api.py', encoding='utf-8') as x:
+      return json.load(x)
+
+
 jugadores = cargar_jugadores()
+botines = cargar_botines()
+codigos = cargar_codigos()
 
 # Versión 1: el servidor convierte los datos a JSON y el JS los usa directamente
 @app.route('/')
@@ -20,26 +31,53 @@ def inicio():
 @app.route('/jugadores')
 def lista_jugadores():
   print(request.user_agent)
-  talle2 = request.args.get('talle')
-  edad2 = request.args.get('edadmax')  
-  lista = []
-
-  for i in jugadores:
-     if edad2 and int(edad2) >= i["edad"] and  talle2 == i["talle"]:
-      
-        lista.append(i)
-    
-    
-  print('En el query llegó el nombre:', lista)
-#  if talle 
-  # To do: Renderizar solo los jugadores del talle/edad que me pidan!
+  talle = request.args.get('talle')
+  if not talle: 
+     return render_template('jugadores.html', jugadores=jugadores)
   
-  return render_template('jugadores.html', jugadores=lista)
-# Versión 2: el servidor solo renderiza los nombres, el JS pide la info al servidor
+  print('En el query llegó el talle:', talle)
+  
+  # To do: Renderizar solo los jugadores del talle/edad que me pidan!
+  elegidos = []
+  for j in jugadores:
+     if j['talle'] == talle:
+        elegidos.append(j)
+        print(f'se sumó al equipo {j['nombre']} de talle {j['talle']}')
+  return render_template('jugadores.html', jugadores=elegidos)
 
-@app.route('/jugadores/<int:indice>')
-def jugador(indice):
-    return jsonify(jugadores[indice])
+@app.route('/botineslista')
+def lista_botines_biblio():
+  return render_template('botines.html', botines=botines )
+
+@app.route(f'/botines')
+def lista_botines():
+  print(request.user_agent)
+  talle = request.args.get('talle')
+  if not talle: 
+     return render_template('botines.html', botines = botines)
+  
+  print('En el query llegó el talle:', talle)
+
+  elegidos = []
+  for b in botines:
+     if b['talle'] == talle:
+        elegidos.append(b)
+        print(f'Los botines {b['nombre']} de talle {b['talle']} de {b['precio']} fueron comprados')
+  return render_template('botines.html', botines=elegidos)
+
+
+
+@app.route('/jugadores/<nombre>')
+def jugador(nombre):
+    for j in jugadores:
+       if j['nombre'] == nombre:
+          return jsonify(j)
+
+@app.route('/botines/<nombre>')
+def botiness(nombre)                                  :
+    for b in botines:
+       if b['nombre'] == nombre:
+          return jsonify(b)
 
 @app.route('/jugador', methods=['GET'])
 def formulario_jugador():
@@ -55,6 +93,9 @@ def crear_jugador():
     }
     jugadores.append(datos) # Guardamos el jugador en MEMORIA
 
+    with open('data/jugadores.json',mode="w",encoding='utf-8') as x:
+      json.dump(jugadores, x)
+    
     # To do: guardar el jugador en el archivo JSON para que persista aunque se reinicie el servidor
     with open('data/jugadores.json',mode="w",encoding='utf-8') as x:
         json.dump(jugadores, x)
@@ -64,9 +105,20 @@ def crear_jugador():
 def competiciones():
     return jsonify(get_competiciones())
 
-@app.route('/api/competiciones/equipos')
-def equipos():
-    return jsonify(get_equipos('CL')) # CL = Champions League
+# @app.route('/api/competiciones/equipos')
+# def equipos():
+#    codigo = request.args.get('code')
+#    elegido = []
+#    for c in codigos:
+#       if c['code'] == codigo:
+#          elegido.append(c('code'))
+#          print(f'Codigo = equipo{c}')
+#    return jsonify(get_equipos(f'{elegido}')) # CL = Champions League
+
+@app.route('/api/competiciones/<int:id_codigo>/equipos')
+def equipos(id_codigo):
+  return jsonify(get_equipos(id_codigo))
+
 
 @app.route('/api/equipos/<int:id_equipo>')
 def equipo(id_equipo):
