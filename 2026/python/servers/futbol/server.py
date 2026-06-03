@@ -12,19 +12,17 @@ def cargar_botines():
    with open('data/botines.json', encoding='utf-8') as x:
       return json.load(x)
 
-def cargar_codigos():
-   with open('football.api.py', encoding='utf-8') as x:
-      return json.load(x)
-
-
 jugadores = cargar_jugadores()
 botines = cargar_botines()
-codigos = cargar_codigos()
 
 # Versión 1: el servidor convierte los datos a JSON y el JS los usa directamente
 @app.route('/')
 def inicio():
   return render_template('inicio.html', jugadores=jugadores)
+
+@app.route('/competiciones')
+def competiciones_render():
+  return render_template('competiciones.html', competiciones=get_competiciones()['competitions'])
 
 # Versión 2: el servidor solo renderiza los nombres, 
 # el JS pide la info de detalles del jugador al servidor
@@ -151,7 +149,7 @@ def botin(indice):
 
 if __name__ == '__main__':
     print('🚀 Servidor en http://localhost:3005')
-    app.run(port=3005, debug=True)
+    app.run(host='0.0.0.0', port=3005, debug=True)
 
 
 
