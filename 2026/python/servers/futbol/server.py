@@ -99,9 +99,36 @@ def crear_jugador():
         json.dump(jugadores, x)
     return render_template('nuevo_jugador.html', mensaje=f"✅ Jugador agregado: {datos['nombre']}")
 
+##########################################################
+
+# Cache en archivo para las competiciones (la API tiene rate limit muy bajo)
+CACHE_COMPETICIONES = 'data/cache_competiciones.json'
+
+def leer_cache(nombre_archivo):
+    try:
+        with open(nombre_archivo, encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print('El archivo de cache todavía no existe')
+        return None
+
+def escribir_cache(nombre_archivo, datos):
+    with open(nombre_archivo, mode='w', encoding='utf-8') as f:
+        json.dump(datos, f)
+
+##########################################################
+
 @app.route('/api/competiciones')
 def competiciones():
-    return jsonify(get_competiciones())
+    cache = leer_cache(CACHE_COMPETICIONES)
+    if cache:
+        print('✅ Cache HIT: competiciones')
+        return jsonify(cache)
+
+    print('❌ Cache MISS: competiciones')
+    cache = get_competiciones()
+    escribir_cache(CACHE_COMPETICIONES, cache)
+    return jsonify(cache)
 
 # @app.route('/api/competiciones/equipos')
 # def equipos():
