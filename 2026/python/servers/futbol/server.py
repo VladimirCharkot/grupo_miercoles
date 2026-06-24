@@ -1,4 +1,6 @@
 import json
+import os
+import time
 from flask import Flask, render_template, jsonify, request
 from data.football_api import get_tabla_de_posiciones, get_competiciones, get_equipos, get_equipo
 
@@ -22,7 +24,14 @@ def inicio():
 
 @app.route('/competiciones')
 def competiciones_render():
-  return render_template('competiciones.html', competiciones=get_competiciones()['competitions'])
+  cache = leer_cache(CACHE_COMPETICIONES)
+  if cache:
+    print('✅ Cache HIT: competiciones')
+  else:
+    print('❌ Cache MISS: competiciones')
+    cache = get_competiciones()
+    escribir_cache(CACHE_COMPETICIONES, cache)
+  return render_template('competiciones.html', competiciones=cache['competitions'])
 
 # Versión 2: el servidor solo renderiza los nombres, 
 # el JS pide la info de detalles del jugador al servidor
@@ -63,8 +72,6 @@ def lista_botines():
         print(f'Los botines {b['nombre']} de talle {b['talle']} de {b['precio']} fueron comprados')
   return render_template('botines.html', botines=elegidos)
 
-
-
 @app.route('/jugadores/<nombre>')
 def jugador(nombre):
     for j in jugadores:
@@ -104,8 +111,21 @@ def crear_jugador():
 # Cache en archivo para las competiciones (la API tiene rate limit muy bajo)
 CACHE_COMPETICIONES = 'data/cache_competiciones.json'
 
-def leer_cache(nombre_archivo):
+# Para los equipos la cache depende de la competición, así que el id_codigo
+# forma parte del nombre del archivo (una cache por competición).
+def cache_equipos(id_codigo):
+    return f'data/cache_equipos_{id_codigo}.json'
+
+# Tiempo de vida de la cache en segundos (por defecto 24 horas)
+TTL_CACHE = 60 * 60 * 24
+
+def leer_cache(nombre_archivo, ttl=TTL_CACHE):
     try:
+        # Si el archivo es más viejo que el TTL, lo tratamos como inexistente
+        antiguedad = time.time() - os.path.getmtime(nombre_archivo)
+        if antiguedad > ttl:
+            print('⌛ Cache vencida')
+            return None
         with open(nombre_archivo, encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
@@ -129,23 +149,36 @@ def competiciones():
     cache = get_competiciones()
     escribir_cache(CACHE_COMPETICIONES, cache)
     return jsonify(cache)
+  
 
-# @app.route('/api/competiciones/equipos')
-# def equipos():
-#    codigo = request.args.get('code')
-#    elegido = []
-#    for c in codigos:
-#       if c['code'] == codigo:
-#          elegido.append(c('code'))
-#          print(f'Codigo = equipo{c}')
-#    return jsonify(get_equipos(f'{elegido}')) # CL = Champions League
-
-@app.route('/api/competiciones/<int:id_codigo>/equipos')
+@app.route('/api/competiciones/<id_codigo>/equipos')
 def equipos(id_codigo):
-  return jsonify(get_equipos(id_codigo))
+  archivo = cache_equipos(id_codigo)
+  cache = leer_cache(archivo)
+  if cache:
+    print(f'✅ Cache HIT: equipos {id_codigo}')
+    return jsonify(cache)
+
+  print(f'❌ Cache MISS: equipos {id_codigo}')
+  cache = get_equipos(id_codigo)
+  escribir_cache(archivo, cache)
+  return jsonify(cache)
+
+# Versión render: misma lógica de cache pero devuelve el template
+@app.route('/competiciones/<id_codigo>/equipos')
+def equipos_render(id_codigo):
+  archivo = cache_equipos(id_codigo)
+  cache = leer_cache(archivo)
+  if cache:
+    print(f'✅ Cache HIT: equipos {id_codigo}')
+  else:
+    print(f'❌ Cache MISS: equipos {id_codigo}')
+    cache = get_equipos(id_codigo)
+    escribir_cache(archivo, cache)
+  return render_template('equipos.html', competicion=cache['competition'], equipos=cache['teams'])
 
 
-@app.route('/api/equipos/<int:id_equipo>')
+@app.route('/api/equipos/<id_equipo>')
 def equipo(id_equipo):
     codigo = id_equipo = request.args.get('codigo')
     data = get_competiciones()
@@ -177,10 +210,3 @@ def botin(indice):
 if __name__ == '__main__':
     print('🚀 Servidor en http://localhost:3005')
     app.run(host='0.0.0.0', port=3005, debug=True)
-
-
-
-
-
-
-
