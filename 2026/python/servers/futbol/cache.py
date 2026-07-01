@@ -3,6 +3,7 @@
 import json
 import os
 import time
+from functools import wraps
 
 CACHE_COMPETICIONES = 'data/cache_competiciones.json'
 
@@ -32,7 +33,7 @@ def leer_cache(nombre_archivo, ttl=TTL_CACHE):
             print('⌛ Cache vencida')
             return None
         with open(nombre_archivo, encoding='utf-8') as f:
-            print('✅ Cache HIT: competiciones')
+            print(f'✅ Cache HIT: {nombre_archivo}')
             return json.load(f)
           
     except FileNotFoundError:
@@ -43,3 +44,30 @@ def leer_cache(nombre_archivo, ttl=TTL_CACHE):
 def escribir_cache(nombre_archivo, datos):
     with open(nombre_archivo, mode='w', encoding='utf-8') as f:
         json.dump(datos, f)
+
+
+# Decorador que le agrega cache en archivo a cualquier función.
+#
+# El parámetro `nombre_archivo` es VARIABLE: puede ser
+#   - un string fijo            -> ej: CACHE_COMPETICIONES
+#   - una función que calcula    -> ej: cache_posiciones(codigo)
+#     el path a partir de los mismos argumentos que recibe la función cacheada.
+#
+# Así, get_tabla_de_posiciones('PD') usa 'data/cache_posiciones_PD.json'
+# y get_tabla_de_posiciones('CL') usa 'data/cache_posiciones_CL.json'.
+def con_cache(nombre_archivo):
+    def decorador(fn):
+        @wraps(fn)
+        def envuelto(*args, **kwargs):
+            # Si nos pasaron una función, la usamos para armar el path con los argumentos.
+            archivo = nombre_archivo(*args, **kwargs) if callable(nombre_archivo) else nombre_archivo
+
+            cache = leer_cache(archivo)
+            if cache is not None:
+                return cache
+
+            datos = fn(*args, **kwargs)
+            escribir_cache(archivo, datos)
+            return datos
+        return envuelto
+    return decorador

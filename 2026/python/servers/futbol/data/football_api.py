@@ -1,65 +1,32 @@
 import requests
-from cache import leer_cache, escribir_cache, cache_equipos, cache_posiciones, cache_equipo, CACHE_COMPETICIONES
+from cache import con_cache, cache_equipos, cache_posiciones, cache_equipo, CACHE_COMPETICIONES
 
 API_KEY = "2755c79d8c4e42cf872bc7b3deb965e1"
 BASE = "https://api.football-data.org/v4"
 
-def get_tabla_de_posiciones(codigo_de_competicion):
-    archivo = cache_posiciones(codigo_de_competicion)
-    cache = leer_cache(archivo)
-    if cache:
-        return cache
 
-    respuesta = requests.get(
-        f"{BASE}/competitions/{codigo_de_competicion}/standings",
-        headers={"X-Auth-Token": API_KEY}
-    )
+# Helper: hace el pedido a la API y devuelve el JSON (o lanza error si falló).
+def _pedir(ruta):
+    respuesta = requests.get(f"{BASE}{ruta}", headers={"X-Auth-Token": API_KEY})
     respuesta.raise_for_status()
-    datos = respuesta.json()
-    escribir_cache(archivo, datos)
-    return datos
+    return respuesta.json()
 
+
+@con_cache(CACHE_COMPETICIONES)
 def get_competiciones():
-    cache = leer_cache(CACHE_COMPETICIONES)
-    if cache:
-        return cache
+    return _pedir("/competitions")
 
-    respuesta = requests.get(
-        f"{BASE}/competitions",
-        headers={"X-Auth-Token": API_KEY}
-    )
-    respuesta.raise_for_status()
-    datos = respuesta.json()
-    escribir_cache(CACHE_COMPETICIONES, datos)
-    return datos
 
+@con_cache(cache_posiciones)
+def get_tabla_de_posiciones(codigo_de_competicion):
+    return _pedir(f"/competitions/{codigo_de_competicion}/standings")
+
+
+@con_cache(cache_equipos)
 def get_equipos(codigo_de_competicion):
-    archivo = cache_equipos(codigo_de_competicion)
-    cache = leer_cache(archivo)
-    if cache:
-        return cache
+    return _pedir(f"/competitions/{codigo_de_competicion}/teams")
 
-    respuesta = requests.get(
-        f"{BASE}/competitions/{codigo_de_competicion}/teams",
-        headers={"X-Auth-Token": API_KEY}
-    )
-    respuesta.raise_for_status()
-    datos = respuesta.json()
-    escribir_cache(archivo, datos)
-    return datos
 
+@con_cache(cache_equipo)
 def get_equipo(id_equipo):
-    archivo = cache_equipo(id_equipo)
-    cache = leer_cache(archivo)
-    if cache:
-        return cache
-
-    respuesta = requests.get(
-        f"{BASE}/teams/{id_equipo}",
-        headers={"X-Auth-Token": API_KEY}
-    )
-    respuesta.raise_for_status()
-    datos = respuesta.json()
-    escribir_cache(archivo, datos)
-    return datos
-  
+    return _pedir(f"/teams/{id_equipo}")
