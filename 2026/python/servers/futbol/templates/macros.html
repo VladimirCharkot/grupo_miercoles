@@ -1,0 +1,27 @@
+{# ===== Macro reutilizable: una tarjeta de la grilla ===== #}
+{# Se usa en competiciones.html y equipos.html. Los parámetros #}
+{# opcionales (area, badge, coach) solo se muestran si llegan.  #}
+
+{% macro tarjeta(imagen, nombre, area=None, badge=None, coach=None) %}
+  <div class="tarjeta">
+    <img src="{{ imagen }}" alt="{{ nombre }}">
+    <div class="nombre">{{ nombre }}</div>
+
+    {% if area %}
+      <div class="area">
+        {% if area.flag %}
+          <img src="{{ area.flag }}" alt="{{ area.name }}">
+        {% endif %}
+        {{ area.name }}
+      </div>
+    {% endif %}
+
+    {% if badge %}
+      <div class="badge">{{ badge }}</div>
+    {% endif %}
+
+    {% if coach %}
+      <div class="coach">DT: {{ coach }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}

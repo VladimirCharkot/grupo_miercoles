@@ -1,99 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Fulbacho</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+{% extends 'base.html' %}
 
-    body {
-      font-family: sans-serif;
-      min-height: 100vh;
-      background: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 20px;
-    }
+{% block estilos %}
+  {% include 'partials/estilos_maestro_detalle.html' %}
+{% endblock %}
 
-    .topbar {
-      background: #264653;
-      color: white;
-      height: 60px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
-
-    .medio {
-      display: flex;
-      flex-direction: row;
-      gap: 16px;
-      flex: 1;
-    }
-
-    .sidebar {
-      background: #2a9d8f;
-      width: 220px;
-      border-radius: 10px;
-      padding: 16px;
-    }
-
-    .sidebar ul {
-      list-style: none;
-    }
-
-    .sidebar li {
-      color: white;
-      padding: 10px 8px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .sidebar li:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .sidebar li.activo {
-      background: rgba(255, 255, 255, 0.35);
-      font-weight: bold;
-    }
-
-    .content {
-      background: white;
-      flex: 1;
-      border-radius: 10px;
-      padding: 24px;
-    }
-
-    .content h2 {
-      margin-bottom: 16px;
-      color: #264653;
-    }
-
-    .content p {
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-
-    .footer {
-      background: #264653;
-      color: white;
-      height: 50px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="topbar">Fulbacho</div>
-
+{% block contenido %}
   <div class="medio">
 
     <div class="sidebar">
@@ -109,9 +20,9 @@
     </div>
 
   </div>
+{% endblock %}
 
-  <div class="footer">Fulbacho &copy; 2026</div>
-
+{% block scripts %}
   <script>
     // Los datos vienen del servidor como JSON
     const jugadores = {{ jugadores | tojson }};
@@ -154,6 +65,4 @@
       content.appendChild(talle);
     });
   </script>
-
-</body>
-</html>
+{% endblock %}

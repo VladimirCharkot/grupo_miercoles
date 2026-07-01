@@ -1,146 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Fulbacho - Equipos</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+{% extends 'base.html' %}
+{% from 'macros.html' import tarjeta %}
 
-    body {
-      font-family: sans-serif;
-      min-height: 100vh;
-      background: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 20px;
-    }
+{% block titulo %}Fulbacho - Equipos{% endblock %}
 
-    .topbar {
-      background: #264653;
-      color: white;
-      height: 60px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 0 20px;
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
+{% block estilos %}
+  {% include 'partials/estilos_grilla.html' %}
+{% endblock %}
 
-    .topbar img {
-      height: 36px;
-      object-fit: contain;
-    }
+{% block topbar %}
+  {% if competicion.emblem %}
+    <img src="{{ competicion.emblem }}" alt="{{ competicion.name }}">
+  {% endif %}
+  Fulbacho — {{ competicion.name }}
+{% endblock %}
 
-    h2 {
-      color: #264653;
-      font-size: 1.3rem;
-    }
-
-    .grilla {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .tarjeta {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      width: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      text-align: center;
-    }
-
-    .tarjeta img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-    }
-
-    .tarjeta .nombre {
-      font-weight: bold;
-      color: #264653;
-      font-size: 1rem;
-    }
-
-    .tarjeta .area {
-      color: #888;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .tarjeta .area img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
-
-    .tarjeta .tla {
-      font-size: 0.8rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: #e9f5f4;
-      color: #2a9d8f;
-      font-weight: bold;
-    }
-
-    .tarjeta .coach {
-      font-size: 0.8rem;
-      color: #555;
-    }
-
-    .footer {
-      background: #264653;
-      color: white;
-      height: 50px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="topbar">
-    {% if competicion.emblem %}
-      <img src="{{ competicion.emblem }}" alt="{{ competicion.name }}">
-    {% endif %}
-    Fulbacho — {{ competicion.name }}
-  </div>
-
+{% block contenido %}
   <h2>Equipos ({{ equipos | length }})</h2>
 
   <div class="grilla">
     {% for equipo in equipos %}
-      <div class="tarjeta">
-        <img src="{{ equipo.crest }}" alt="{{ equipo.name }}">
-        <div class="nombre">{{ equipo.name }}</div>
-        <div class="area">
-          {% if equipo.area.flag %}
-            <img src="{{ equipo.area.flag }}" alt="{{ equipo.area.name }}">
-          {% endif %}
-          {{ equipo.area.name }}
-        </div>
-        {% if equipo.tla %}
-          <div class="tla">{{ equipo.tla }}</div>
-        {% endif %}
-        {% if equipo.coach and equipo.coach.name %}
-          <div class="coach">DT: {{ equipo.coach.name }}</div>
-        {% endif %}
-      </div>
+      {{ tarjeta(
+           equipo.crest,
+           equipo.name,
+           area=equipo.area,
+           badge=equipo.tla,
+           coach=(equipo.coach.name if equipo.coach else None)
+      ) }}
     {% endfor %}
   </div>
-
-  <div class="footer">Fulbacho &copy; 2026</div>
-
-</body>
-</html>
+{% endblock %}
