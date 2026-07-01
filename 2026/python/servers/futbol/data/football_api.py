@@ -14,6 +14,7 @@ def _pedir(ruta):
 
 @con_cache(CACHE_COMPETICIONES)
 def get_competiciones():
+    """Pide la lista de competiciones a football-data"""
     return _pedir("/competitions")
 
 

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Fulbacho - Sketch p5{% endblock %}
+
+{% block topbar %}Fulbacho — Cancha{% endblock %}
+
+{% block estilos %}
+  #lienzo {
+    border-radius: 10px;
+    overflow: hidden;
+    align-self: flex-start;
+  }
+{% endblock %}
+
+{% block contenido %}
+  <div id="lienzo"></div>
+{% endblock %}
+
+{% block scripts %}
+  <!-- p5.js por CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.0/lib/p5.js"></script>
+
+  <script>
+    // p5 en "modo global": define setup() y draw() y p5 las llama solo.
+
+    const DATA = {{ data | tojson }};
+
+    function setup() {
+
+      console.log(DATA)
+
+      // Un lienzo que ocupa el ancho de la ventana (menos el padding del body).
+      const lienzo = createCanvas(windowWidth - 40, 400);
+      lienzo.parent('lienzo');   // lo metemos dentro del div #lienzo
+    }
+    
+    function draw() {
+      background('#264653');
+
+      noStroke();
+      fill('#2a9d8f');
+      circle(mouseX, mouseY, 50); // un círculo donde está el mouse
+
+      text(DATA.teams[0].name, mouseX, mouseY - 30); // mostramos el nombre del equipo en la posición del mouse
+    }
+
+    // Si cambia el tamaño de la ventana, ajustamos el lienzo.
+    function windowResized() {
+      resizeCanvas(windowWidth - 40, 400);
+    }
+  </script>
+{% endblock %}
