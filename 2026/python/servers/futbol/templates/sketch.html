@@ -6,14 +6,53 @@
 
 {% block estilos %}
   #lienzo {
-    border-radius: 10px;
-    overflow: hidden;
-    align-self: flex-start;
+    border-radius: 10px
+    overflow: hidden
+  }
+
+  #contenedor{
+    display: flex
+    flex-direction: column
+    align-items: center
+  }
+
+  #controles {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  #controles button {
+    background: #264653;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  #nombre_equipo {
+    font-weight: bold;
+    min-width: 200px;
+    text-align: center;
   }
 {% endblock %}
 
 {% block contenido %}
+<div id="contenedor">
+  <div id="controles">
+    <button onclick="cambiarEquipo(-1)">&lt;</button>
+    <span id="nombre_equipo"></span>
+    <button onclick="cambiarEquipo(1)">&gt;</button>
+  </div>
   <div id="lienzo"></div>
+  <div id="jugadores">
+    <p>Jugadores:</p>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -23,30 +62,127 @@
   <script>
     // p5 en "modo global": define setup() y draw() y p5 las llama solo.
 
-    const DATA = {{ data | tojson }};
+    const equipos = {{ data | tojson }}
+
+    console.log(equipos)
+    
+    // Ancho y alto del lienzo
+    let w = 400
+    let h = 420
+
+    // Qué equipo de la lista estamos dibujando
+    let nro_equipo = 4
 
     function setup() {
-
-      console.log(DATA)
-
-      // Un lienzo que ocupa el ancho de la ventana (menos el padding del body).
-      const lienzo = createCanvas(windowWidth - 40, 400);
-      lienzo.parent('lienzo');   // lo metemos dentro del div #lienzo
+      const lienzo = createCanvas(w, h)
+      lienzo.parent('lienzo')   // lo metemos dentro del div #lienzo
+      mostrarNombre()
     }
-    
+
+    // Suma o resta al número de equipo, dando la vuelta en los extremos
+    function cambiarEquipo(paso) {
+      let cantidad = equipos.teams.length
+      nro_equipo = (nro_equipo + paso + cantidad) % cantidad
+      mostrarNombre()
+    }
+
+    function mostrarNombre() {
+      let equipo = equipos.teams[nro_equipo]
+      document.getElementById('nombre_equipo').textContent = equipo.name
+    }
+
     function draw() {
-      background('#264653');
+      background('#264653')
+      stroke('white')
+      dibujarCancha()
+    }
 
-      noStroke();
-      fill('#2a9d8f');
-      circle(mouseX, mouseY, 50); // un círculo donde está el mouse
+    function dibujarCancha(m = 20, ha = 60){
+      // Trazo ancho y figuras sin relleno
+      strokeWeight(3)
+      noFill()
 
-      text(DATA.teams[0].name, mouseX, mouseY - 30); // mostramos el nombre del equipo en la posición del mouse
+      // Ancho y alto de la cancha: lienzo - margen * 2
+      let wc = w - 2 * m
+      let hc = h - 2 * m
+
+      // Medidas y pos del área
+      let wa = wc / 3
+      let xa = wc / 3
+
+      // Movemos la "regla"
+      translate(m, m)
+
+      circle(wc/2, hc/2, 80)
+
+      rect(0, 0, wc, hc)
+
+      line(0, hc/2, wc, hc/2)
+
+      // Área 1
+      rect(xa, 0, wa, ha)
+
+      // Área 2
+      rect(xa, hc, wa, -ha)
+
+
+      // A PARTIR DE ACÁ ES LA FORMACION
+
+      fill('red')
+      noStroke()
+
+      // Agarramos un equipo de los que están en wc.js
+      let equipo = equipos.teams[nro_equipo].squad
+
+      // De ese equipo, agarramos los jugadores de cada categoría
+      let arqs = equipo.filter(jug => jug.position == "Goalkeeper")
+      let defs = equipo.filter(jug => jug.position == "Defence")
+      let dels = equipo.filter(jug => jug.position == "Offence")
+      let cent = equipo.filter(jug => jug.position == "Midfield")
+
+      // Para que quepan los nombres
+      textSize(11)
+
+      // Arquero
+      dibujarJugador (wc / 2, 0, arqs[0].name)
+
+      // Defensores
+      let cant_def = 4
+      let yd1 = 80
+      let yd2 = yd1 + 30
+      let xdf = wc / (cant_def + 1)
+      dibujarJugador (xdf * 1, yd2, defs[0].name)
+      dibujarJugador (xdf * 2, yd1, defs[1].name)
+      dibujarJugador (xdf * 3, yd1, defs[2].name)
+      dibujarJugador (xdf * 4, yd2, defs[3].name)
+
+      let cant_cent = 3
+      let yc1 = 210
+      let yc2 = yc1 + 35
+      let xcf = wc / (cant_cent + 1)
+      dibujarJugador (xcf * 1, yc2, cent[0].name)
+      dibujarJugador (xcf * 2, yc1, cent[1].name)
+      dibujarJugador (xcf * 3, yc2, cent[2].name)
+
+      let cant_del = 3
+      let ye1 = 320
+      let ye2 = ye1 + 30
+      let xef = wc / (cant_del + 1)
+      dibujarJugador (xef * 1, ye1, dels[0].name)
+      dibujarJugador (xef * 2, ye2, dels[1].name)
+      dibujarJugador (xef * 3, ye1, dels[2].name)
+
+    }
+
+    function dibujarJugador(x, y, nombre){
+      circle (x, y, 15)
+      let dx = width / 2 - x
+      text(nombre, x - 40 - dx / 3, y - 10)
     }
 
     // Si cambia el tamaño de la ventana, ajustamos el lienzo.
     function windowResized() {
-      resizeCanvas(windowWidth - 40, 400);
+      resizeCanvas(w, h)
     }
   </script>
 {% endblock %}
